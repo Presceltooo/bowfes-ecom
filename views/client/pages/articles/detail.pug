@@ -1,0 +1,26 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+
+block main 
+  .product-detail
+    .container.my-5
+      .row 
+        .col-6 
+          .inner-thumb 
+            img(src=product.thumbnail, alt=product.title)
+        .col-6
+          h1(class="inner-title") #{product.title}
+          
+          if (product.category)
+            div(class="inner-category")
+              span Danh mục: 
+              a(href=`/articles/${product.category.slug}`) #{product.category}
+
+    hr
+
+    .container.my-5 
+      .row 
+        .col-12
+          +box-head("Nội dung bài viết")
+          .inner-desc !{product.description}
+          
